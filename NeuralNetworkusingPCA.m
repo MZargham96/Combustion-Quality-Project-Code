@@ -25,7 +25,7 @@ xtrain = [x(:,one(1,1:onebythree)) x(:,minusone(1,1:onebythree))];
 
 Means = mean(xtrain,2);
 S = std(xtrain,1,2);
-Xtrain = (xtrain - Means);
+Xtrain = (xtrain - Means)./S;
 
 %testing set and standard normalization
 ytest = [y(one(1,onebythree+1:end)) y(minusone(1,onebythree+1:end))];
@@ -33,7 +33,7 @@ xtest = [x(:,one(1,onebythree+1:end)) x(:,minusone(1,onebythree+1:end))];
 
 Means = mean(xtest,2);
 S = std(xtest,1,2);
-Xtest = (xtest - Means);
+Xtest = (xtest - Means)./S;
 %%
 % find PCA
 Cov = (1/P)*Xtrain*Xtrain'; %Covariance Matrix
